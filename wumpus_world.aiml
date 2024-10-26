@@ -1,0 +1,82 @@
+<aiml version="2.0">
+    <!-- Introduction and Game Rules -->
+    <category>
+        <pattern>WHAT IS WUMPUS WORLD</pattern>
+        <template>
+            Wumpus World is a grid-based game where you navigate a cave to find gold, avoid pits, and escape the Wumpus monster. You can move by saying "MOVE NORTH," "MOVE SOUTH," etc., or gather gold by saying "GATHER GOLD".
+        </template>
+    </category>
+
+    <!-- Movement Commands -->
+    <category>
+        <pattern>MOVE NORTH</pattern>
+        <template>
+            <think><set name="direction">north</set></think>
+            You moved north. <srai>CHECK FOR HAZARDS</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>MOVE SOUTH</pattern>
+        <template>
+            <think><set name="direction">south</set></think>
+            You moved south. <srai>CHECK FOR HAZARDS</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>MOVE EAST</pattern>
+        <template>
+            <think><set name="direction">east</set></think>
+            You moved east. <srai>CHECK FOR HAZARDS</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>MOVE WEST</pattern>
+        <template>
+            <think><set name="direction">west</set></think>
+            You moved west. <srai>CHECK FOR HAZARDS</srai>
+        </template>
+    </category>
+
+    <!-- Hazard Sensing -->
+    <category>
+        <pattern>CHECK FOR HAZARDS</pattern>
+        <template>
+            <random>
+                <li>You feel a breeze nearby. There may be a pit!</li>
+                <li>You smell something foul. The Wumpus might be close!</li>
+                <li>You see a glimmer of gold nearby.</li>
+                <li>All clear for now!</li>
+            </random>
+        </template>
+    </category>
+
+    <!-- Gather Gold -->
+    <category>
+        <pattern>GATHER GOLD</pattern>
+        <template>
+            <random>
+                <li>Congratulations! You've collected the gold!</li>
+                <li>The gold is out of reach, keep moving!</li>
+            </random>
+        </template>
+    </category>
+
+    <!-- Responding to Wumpus Encounter -->
+    <category>
+        <pattern>WHAT HAPPENS IF I MEET THE WUMPUS</pattern>
+        <template>
+            If you encounter the Wumpus, you will be eaten! Try to avoid it by sensing your surroundings for a foul smell.
+        </template>
+    </category>
+
+    <!-- Game End -->
+    <category>
+        <pattern>I AM DEAD</pattern>
+        <template>
+            Game over! You fell into a pit or encountered the Wumpus. Better luck next time!
+        </template>
+    </category>
+</aiml>
